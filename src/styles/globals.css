@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #1a1a1a;
+    color: #e5e5e5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Thin scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3f3f3f;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+@layer components {
+  /* Tiptap editor styles */
+  .tiptap-editor {
+    @apply outline-none min-h-full;
+  }
+
+  .tiptap-editor h1 {
+    @apply text-3xl font-bold mt-6 mb-2 text-white;
+  }
+  .tiptap-editor h2 {
+    @apply text-2xl font-semibold mt-5 mb-2 text-white;
+  }
+  .tiptap-editor h3 {
+    @apply text-xl font-semibold mt-4 mb-1 text-white;
+  }
+  .tiptap-editor p {
+    @apply my-1 leading-relaxed;
+  }
+  .tiptap-editor ul {
+    @apply list-disc pl-6 my-2;
+  }
+  .tiptap-editor ol {
+    @apply list-decimal pl-6 my-2;
+  }
+  .tiptap-editor li {
+    @apply my-0.5;
+  }
+  .tiptap-editor strong {
+    @apply font-semibold text-white;
+  }
+  .tiptap-editor em {
+    @apply italic;
+  }
+  .tiptap-editor code {
+    @apply bg-[#2a2a2a] text-[#a78bfa] px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+  .tiptap-editor pre {
+    @apply bg-[#2a2a2a] rounded-lg p-4 my-3 overflow-x-auto;
+  }
+  .tiptap-editor pre code {
+    @apply bg-transparent p-0 text-[#e5e5e5];
+  }
+  .tiptap-editor blockquote {
+    @apply border-l-4 border-[#6366f1] pl-4 my-3 text-gray-400 italic;
+  }
+  .tiptap-editor a, .editor-link {
+    @apply text-blue-400 underline cursor-pointer;
+  }
+  .tiptap-editor a:hover, .editor-link:hover {
+    @apply text-blue-300;
+  }
+  .tiptap-editor img {
+    @apply max-w-full rounded-lg my-3 block;
+  }
+  .tiptap-editor u {
+    text-decoration: underline;
+  }
+
+  /* Record pulse animation */
+  @keyframes record-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+  }
+
+  .recording-pulse {
+    animation: record-pulse 1.2s ease-in-out infinite;
+  }
+
+  /* Waveform bars animation */
+  @keyframes wave {
+    0%, 100% { height: 4px; }
+    50% { height: 20px; }
+  }
+
+  .wave-bar {
+    animation: wave 0.8s ease-in-out infinite;
+  }
+  .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+  .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+  .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+  .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+
+  /* macOS traffic light area */
+  .titlebar-drag {
+    -webkit-app-region: drag;
+  }
+  .titlebar-no-drag {
+    -webkit-app-region: no-drag;
+  }
+}
